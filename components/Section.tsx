@@ -21,34 +21,34 @@ export default function Section({ title, description, index }: SectionProps) {
 
   return (
     <section
-      className={`py-20 md:py-32 px-4 bg-transparent relative ${index === 0 ? '-mt-40' : ''}`}
+      className={`py-12 sm:py-16 md:py-32 px-4 sm:px-6 bg-transparent relative ${index === 0 ? '-mt-20 sm:-mt-32 md:-mt-40' : ''}`}
     >
       <div className="max-w-7xl mx-auto">
         <div
           className={`flex flex-col ${
             isEven ? "md:flex-row" : "md:flex-row-reverse"
-          } items-center gap-12 md:gap-16`}
+          } items-center gap-8 sm:gap-12 md:gap-16`}
         >
-          <div className="flex-1 space-y-8 bg-white rounded-3xl p-8 md:p-12 shadow-xl">
+          <div className="flex-1 w-full space-y-6 sm:space-y-8 bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl">
             <div className="inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 rounded-2xl w-fit shadow-md border border-blue-100">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-xl font-black text-white">0{index + 1}</span>
               </div>
               <span className="text-sm font-bold text-blue-700 uppercase tracking-wider">Core Value</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">
               {title.split(" ").map((word, i) => (
                 <span key={i} className={i === 0 ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent" : ""}>
                   {word}{" "}
                 </span>
               ))}
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl">
               {description}
             </p>
           </div>
-          <div className="flex-1 flex justify-center">
-            <div className="relative w-full max-w-lg h-[500px] rounded-3xl overflow-hidden shadow-2xl group">
+          <div className="flex-1 flex justify-center w-full">
+            <div className="relative w-full max-w-lg h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group">
               <Image
                 src={sectionImages[index]}
                 alt={title}

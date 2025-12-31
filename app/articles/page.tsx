@@ -6,9 +6,9 @@ export default function ArticlesPage() {
   const articles = content.articles;
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white pt-16 sm:pt-20">
       {/* Hero Section */}
-      <section className="relative py-16 md:py-24 px-4 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <Image
             src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1920&q=80"
@@ -18,18 +18,18 @@ export default function ArticlesPage() {
           />
         </div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="text-6xl mb-6">📝</div>
-          <h1 className="text-4xl md:text-5xl font-black mb-4">Articles & Insights</h1>
-          <p className="text-xl md:text-2xl text-blue-100 leading-relaxed">
+          <div className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6">📝</div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-3 sm:mb-4 px-2">Articles & Insights</h1>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 leading-relaxed px-2">
             Explore our latest thoughts, insights, and expertise on skills, markets, and opportunities
           </p>
         </div>
       </section>
 
       {/* Articles Grid */}
-      <section className="py-16 md:py-24 px-4">
+      <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {articles.map((article) => (
               <article
                 key={article.id}
@@ -49,21 +49,21 @@ export default function ArticlesPage() {
                     </span>
                   </div>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
+                <div className="p-5 sm:p-6">
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">
                     <span>{new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                     <span>•</span>
                     <span>{article.readTime}</span>
                   </div>
-                  <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-blue-600 transition-colors duration-300 leading-tight">
                     {article.title}
                   </h2>
-                  <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-3 sm:mb-4 line-clamp-3">
                     {article.excerpt}
                   </p>
                   <Link
                     href={`/articles/${article.id}`}
-                    className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300 group-hover:gap-3"
+                    className="inline-flex items-center gap-2 text-sm sm:text-base text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300 group-hover:gap-3"
                   >
                     Read More
                     <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

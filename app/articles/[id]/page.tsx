@@ -13,9 +13,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
   }
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white pt-16 sm:pt-20">
       {/* Hero Section */}
-      <section className="relative py-16 md:py-24 px-4 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <Image
             src={article.image}
@@ -27,22 +27,22 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
         <div className="max-w-4xl mx-auto relative z-10">
           <Link
             href="/articles"
-            className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-sm sm:text-base text-blue-200 hover:text-white transition-colors mb-4 sm:mb-6"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to Articles
           </Link>
-          <div className="mb-4">
-            <span className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full">
+          <div className="mb-3 sm:mb-4">
+            <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-600 text-white text-xs sm:text-sm font-semibold rounded-full">
               {article.category}
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 leading-tight px-2">
             {article.title}
           </h1>
-          <div className="flex items-center gap-4 text-blue-100">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm sm:text-base text-blue-100 px-2">
             <span>{new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
             <span>•</span>
             <span>{article.readTime}</span>
@@ -51,11 +51,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
       </section>
 
       {/* Article Content */}
-      <article className="py-12 md:py-16 px-4">
+      <article className="py-8 sm:py-12 md:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg max-w-none">
-            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-              <div className="relative w-full h-64 md:h-96 mb-8 rounded-xl overflow-hidden">
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-6 sm:p-8 md:p-12">
+              <div className="relative w-full h-48 sm:h-64 md:h-96 mb-6 sm:mb-8 rounded-lg sm:rounded-xl overflow-hidden">
                 <Image
                   src={article.image}
                   alt={article.title}
@@ -64,8 +64,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                 />
               </div>
               
-              <div className="text-lg md:text-xl text-gray-700 leading-relaxed space-y-6">
-                <p className="text-xl md:text-2xl font-semibold text-gray-900 mb-6">
+              <div className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed space-y-4 sm:space-y-6">
+                <p className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">
                   {article.excerpt}
                 </p>
                 
@@ -109,10 +109,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                 </p>
               </div>
 
-              <div className="mt-12 pt-8 border-t">
+              <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t">
                 <Link
                   href="/#contact"
-                  className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="inline-block px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white text-sm sm:text-base font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   Get In Touch →
                 </Link>

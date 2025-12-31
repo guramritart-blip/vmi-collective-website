@@ -7,6 +7,7 @@ import Logo from "./Logo";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 
@@ -17,6 +18,11 @@ export default function Navigation() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Close mobile menu when route changes
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -52,6 +58,29 @@ export default function Navigation() {
             textColor={shouldBeTransparent ? "text-white" : "text-gray-900"}
             className="transition-all duration-300"
           />
+          
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`md:hidden p-2 rounded-lg transition-colors ${
+              shouldBeTransparent 
+                ? "text-white hover:bg-white/10" 
+                : "text-gray-900 hover:bg-gray-100"
+            }`}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {isHomePage ? (
               <>
@@ -136,6 +165,118 @@ export default function Navigation() {
                 </Link>
               </>
             )}
+          </div>
+
+          {/* Mobile Menu */}
+          <div
+            className={`md:hidden fixed top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 transition-transform duration-300 ${
+              isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+            style={{ top: "72px" }}
+          >
+            <div className="flex flex-col p-6 space-y-4">
+              {isHomePage ? (
+                <>
+                  <button
+                    onClick={() => {
+                      scrollToSection("hero");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="text-left text-white font-bold text-lg py-3 hover:text-blue-200 transition-colors"
+                  >
+                    Home
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection("services");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="text-left text-white font-bold text-lg py-3 hover:text-blue-200 transition-colors"
+                  >
+                    Services
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection("additional-services");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="text-left text-white font-bold text-lg py-3 hover:text-blue-200 transition-colors"
+                  >
+                    Divisions
+                  </button>
+                  <Link
+                    href="/articles"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-left text-white font-bold text-lg py-3 hover:text-blue-200 transition-colors"
+                  >
+                    Articles
+                  </Link>
+                  <button
+                    onClick={() => {
+                      scrollToSection("contact");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="text-left text-white font-bold text-lg py-3 hover:text-blue-200 transition-colors"
+                  >
+                    Contact
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection("contact");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="mt-4 px-6 py-3 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border-2 border-white/30 transition-all"
+                  >
+                    Get Started
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/#hero"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-left text-white font-bold text-lg py-3 hover:text-blue-200 transition-colors"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    href="/#services"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-left text-white font-bold text-lg py-3 hover:text-blue-200 transition-colors"
+                  >
+                    Services
+                  </Link>
+                  <Link
+                    href="/#additional-services"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-left text-white font-bold text-lg py-3 hover:text-blue-200 transition-colors"
+                  >
+                    Divisions
+                  </Link>
+                  <Link
+                    href="/articles"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-left text-white font-bold text-lg py-3 hover:text-blue-200 transition-colors"
+                  >
+                    Articles
+                  </Link>
+                  <Link
+                    href="/#contact"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-left text-white font-bold text-lg py-3 hover:text-blue-200 transition-colors"
+                  >
+                    Contact
+                  </Link>
+                  <Link
+                    href="/#contact"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="mt-4 px-6 py-3 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl border-2 border-white/30 transition-all"
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
