@@ -17,6 +17,15 @@ export default function InvestmentPage() {
           />
         </div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm sm:text-base text-[#00d4ff] hover:text-white transition-colors mb-4 sm:mb-6"
+          >
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Home
+          </Link>
           <div className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6">💰</div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-2">Investment</h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#b0b0b0] leading-relaxed px-2">
