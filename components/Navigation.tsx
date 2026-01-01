@@ -50,6 +50,7 @@ export default function Navigation() {
     : "text-[#b0b0b0] hover:text-[#00d4ff]";
 
   return (
+    <>
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBgClass}`}
     >
@@ -148,14 +149,27 @@ export default function Navigation() {
             )}
           </div>
 
-          {/* Mobile Menu */}
-          <div
-            className={`md:hidden fixed left-0 right-0 bottom-0 bg-[#0a0a0a] backdrop-blur-md transition-transform duration-300 z-40 ${
-              isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-            }`}
-            style={{ top: "72px" }}
+        </div>
+      </div>
+    </nav>
+    
+    {/* Mobile Menu - Outside nav to ensure proper z-index */}
+    {isMobileMenuOpen && (
+      <div
+        className="md:hidden fixed inset-0 bg-[#0a0a0a] z-40"
+        style={{ top: "72px" }}
+      >
+        <div className="flex flex-col p-6 pt-8 space-y-4 h-full overflow-y-auto">
+          {/* Close Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="self-end p-2 text-white hover:text-[#00d4ff] transition-colors mb-4"
+            aria-label="Close menu"
           >
-            <div className="flex flex-col p-6 pt-8 space-y-4 overflow-y-auto" style={{ height: "calc(100vh - 72px)" }}>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
               {isHomePage ? (
                 <>
                   <button
@@ -241,11 +255,10 @@ export default function Navigation() {
                   </Link>
                 </>
               )}
-            </div>
-          </div>
         </div>
       </div>
-    </nav>
+    )}
+    </>
   );
 }
 
