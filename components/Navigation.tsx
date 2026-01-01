@@ -160,9 +160,8 @@ export default function Navigation() {
         style={{ top: "72px", height: "calc(100vh - 72px)" }}
       >
         <div className="flex flex-col h-full overflow-y-auto">
-          {/* Menu Header with Logo and Close */}
-          <div className="flex items-center justify-between p-6 pb-4 border-b border-[#252525]">
-            <Logo textColor="text-white" />
+          {/* Menu Header with Close Button */}
+          <div className="flex items-center justify-end p-6 pb-4 border-b border-[#252525]">
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="p-2 text-white hover:text-[#00d4ff] transition-colors"
