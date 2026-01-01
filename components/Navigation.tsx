@@ -157,19 +157,25 @@ export default function Navigation() {
     {isMobileMenuOpen && (
       <div
         className="md:hidden fixed inset-0 bg-[#0a0a0a] z-40"
-        style={{ top: "72px" }}
+        style={{ top: "72px", height: "calc(100vh - 72px)" }}
       >
-        <div className="flex flex-col p-6 pt-8 space-y-4 h-full overflow-y-auto">
-          {/* Close Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="self-end p-2 text-white hover:text-[#00d4ff] transition-colors mb-4"
-            aria-label="Close menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+        <div className="flex flex-col h-full overflow-y-auto">
+          {/* Menu Header with Logo and Close */}
+          <div className="flex items-center justify-between p-6 pb-4 border-b border-[#252525]">
+            <Logo textColor="text-white" />
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-2 text-white hover:text-[#00d4ff] transition-colors"
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          {/* Menu Items */}
+          <div className="flex flex-col p-6 space-y-2">
               {isHomePage ? (
                 <>
                   <button
@@ -255,6 +261,7 @@ export default function Navigation() {
                   </Link>
                 </>
               )}
+          </div>
         </div>
       </div>
     )}
