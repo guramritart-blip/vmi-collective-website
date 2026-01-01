@@ -38,10 +38,11 @@ export default function Navigation() {
     // If not on home page, Link component will handle navigation
   };
 
-  // Determine if nav should be transparent (only on home page when not scrolled)
+  // Determine if nav should be transparent (only on home page when not scrolled, and not on mobile)
   const shouldBeTransparent = isHomePage && !isScrolled;
+  // On mobile, always show background for better visibility
   const navBgClass = shouldBeTransparent 
-    ? "bg-transparent py-6" 
+    ? "bg-[#0a0a0a]/95 md:bg-transparent backdrop-blur-md py-4 md:py-6 border-b md:border-b-0 border-[#252525]" 
     : "bg-[#0a0a0a]/95 backdrop-blur-md shadow-lg py-4 border-b border-[#252525]";
   const textColorClass = shouldBeTransparent ? "text-white" : "text-white";
   const linkColorClass = shouldBeTransparent 
@@ -149,12 +150,12 @@ export default function Navigation() {
 
           {/* Mobile Menu */}
           <div
-            className={`md:hidden fixed top-0 left-0 right-0 bottom-0 bg-[#0a0a0a] transition-transform duration-300 ${
+            className={`md:hidden fixed left-0 right-0 bottom-0 bg-[#0a0a0a] backdrop-blur-md transition-transform duration-300 z-40 ${
               isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
             style={{ top: "72px" }}
           >
-            <div className="flex flex-col p-6 space-y-4">
+            <div className="flex flex-col p-6 pt-8 space-y-4 overflow-y-auto" style={{ height: "calc(100vh - 72px)" }}>
               {isHomePage ? (
                 <>
                   <button

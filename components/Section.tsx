@@ -29,7 +29,25 @@ export default function Section({ title, description, index }: SectionProps) {
             isEven ? "md:flex-row" : "md:flex-row-reverse"
           } items-center gap-8 sm:gap-12 md:gap-16`}
         >
-          <div className="flex-1 w-full space-y-6 sm:space-y-8 bg-[#151515] border border-[#252525] rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl">
+          {/* Image - Above on mobile, side-by-side on desktop */}
+          <div className="flex-1 flex justify-center w-full order-1 md:order-none">
+            <div className="relative w-full max-w-lg h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group">
+              <Image
+                src={sectionImages[index]}
+                alt={title}
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-125"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-[#0a0a0a]/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#00d4ff]/30 to-[#0066ff]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                <div className="h-1 w-20 bg-gradient-to-r from-[#00d4ff] to-[#0066ff] rounded-full mb-4 group-hover:w-32 transition-all duration-500"></div>
+                <div className="text-xl font-bold">{title}</div>
+              </div>
+            </div>
+          </div>
+          {/* Text Content - Below on mobile, side-by-side on desktop */}
+          <div className="flex-1 w-full space-y-6 sm:space-y-8 bg-[#151515] border border-[#252525] rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl order-2 md:order-none">
             <div className="inline-flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#252525] rounded-2xl w-fit shadow-md">
               <div className="w-12 h-12 bg-gradient-to-br from-[#00d4ff] to-[#0066ff] rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-xl font-black text-white">0{index + 1}</span>
@@ -46,22 +64,6 @@ export default function Section({ title, description, index }: SectionProps) {
             <p className="text-base sm:text-lg md:text-xl text-[#b0b0b0] leading-relaxed max-w-2xl">
               {description}
             </p>
-          </div>
-          <div className="flex-1 flex justify-center w-full">
-            <div className="relative w-full max-w-lg h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group">
-              <Image
-                src={sectionImages[index]}
-                alt={title}
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-125"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-[#0a0a0a]/50 to-transparent"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#00d4ff]/30 to-[#0066ff]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                <div className="h-1 w-20 bg-gradient-to-r from-[#00d4ff] to-[#0066ff] rounded-full mb-4 group-hover:w-32 transition-all duration-500"></div>
-                <div className="text-xl font-bold">{title}</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
